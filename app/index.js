@@ -35,14 +35,14 @@ const consultarNomes = (res) => {
                 mysql.end();
                 res.send(`<h1>${error}</h1>`);
             }
-            if(results.length > 0) {
+            if (results.length > 0) {
                 console.log(results);
                 results.forEach(element => {
-                   page += `\n<h1>nome: ${element['nome']}</h1>`
-                });   
-                res.send(page);
+                    page += `\n<h1>nome: ${element['nome']}</h1>`
+                });
+                res.send(page)
             } else {
-               res.send(page);
+                res.send(page)
             }
         }
     )
