@@ -25,7 +25,6 @@ const inserirNome = (nome) => {
 
 const consultarNomes = (res) => {
     let page = '<h1>Full Cycle Rocks!</h1>'
-    console.log('lendo nome')
     const connection = mysql.createConnection(config)
     const sql = `SELECT * FROM nomes`
     connection.query(
@@ -41,10 +40,8 @@ const consultarNomes = (res) => {
                 results.forEach(element => {
                    page += `\n<h1>nome: ${element['nome']}</h1>`
                 });   
-                console.log(page)             
                 res.send(page);
             } else {
-               console.log('vazio')  
                res.send(page);
             }
         }
