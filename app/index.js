@@ -9,7 +9,7 @@ const config = {
     database: 'nodedb'
 }
 
-const mysql = require('mysql')
+const mysql = require('mysql2')
 // const connection = mysql.createConnection(config)
 
 // const sql = `INSERT INTO pessoas(name) values('Alexandre')`
@@ -17,12 +17,10 @@ const mysql = require('mysql')
 // connection.end()
 
 const inserirNome = (nome) => {
-    console.log('inserindo nome')
     const connection = mysql.createConnection(config)
     const sql = `INSERT INTO nomes(nome) values('${nome}')`
     connection.query(sql)
     connection.end()
-    console.log('nome foi inserido')
 }
 
 const consultarNomes = (res) => {
@@ -42,17 +40,17 @@ const consultarNomes = (res) => {
                 console.log(results);
                 results.forEach(element => {
                    page += `\n<h1>nome: ${element['nome']}</h1>`
-                });
-                
+                });   
+                console.log(page)             
                 res.send(page);
             } else {
+               console.log('vazio')  
                res.send(page);
             }
         }
     )
     connection.end()
 }
-
 
 app.get('/', (req, res) => {
     inserirNome('Alexandre')
