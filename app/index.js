@@ -50,5 +50,5 @@ app.get('/', (req, res) => {
 })
 
 app.listen(port, () => {
-    console.log('rodando na porta sim  ' + port)
+    console.log('rodando na porta' + port)
 })
