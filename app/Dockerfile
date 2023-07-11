@@ -1,7 +1,5 @@
 FROM node AS builder
 
-WORKDIR /usr/src/app
-
 ENV DOCKERIZE_VERSION v0.7.0
 
 RUN apt-get update \
@@ -11,7 +9,9 @@ RUN apt-get update \
 
 
 # Build prod
-FROM node:alpine
+FROM node
+
+WORKDIR /usr/src/app
 
 COPY --from=builder /usr/local/bin/dockerize /usr/local/bin/dockerize
 COPY index.js .

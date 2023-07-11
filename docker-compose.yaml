@@ -6,8 +6,9 @@ services:
       context: app
     container_name: app
     entrypoint: dockerize -wait tcp://db:3306 -timeout 20s docker-entrypoint.sh node index.js
-    # volumes:
-    #   - ./app:/usr/src/app 
+    volumes:
+      - ./app:/usr/src/app 
+      - /usr/src/app/node_modules
     networks:
       - node-network
     tty: true
@@ -38,6 +39,8 @@ services:
      - "8080:80"
     networks:
       - node-network
+    depends_on:
+      - app
 
 networks:
   node-network:
