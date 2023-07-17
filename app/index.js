@@ -19,7 +19,7 @@ const inserirNome = (nome) => {
 }
 
 const consultarNomes = (res) => {
-    let page = '<h1>Full Cycle Rocks!</h1>'
+    let page = '<h1>Full Cycle Rocks!!</h1>'
     const connection = mysql.createConnection(config)
     const sql = `SELECT * FROM nomes`
     connection.query(
